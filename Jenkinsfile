@@ -1,12 +1,7 @@
 pipeline {
-    agent { docker 'public.ecr.aws/docker/library/golang:latest' }
+    agent { dockerfile true }
     environment {
-      GOCACHE = "${env.WORKSPACE}/.build_cache"
-    }
-    options {
-        buildDiscarder(logRotator(daysToKeepStr: '10', numToKeepStr: '10'))
-        timeout(time: 1, unit: 'HOURS')
-        timestamps()
+      DOCKER = credentials("dockerHub")
     }
     stages {
         stage('Source') {
@@ -19,12 +14,18 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh "docker build -t racer ."
+      steps {
+        container('docker') {
+          sh("docker login -u $DOCKER_USR -p $DOCKER_PSW")
+          sh("docker build -t $DOCKER_USR/racer .")
+
+        }
+      }
             }
         }
         stage('Push') {
             steps {
-                sh 'push.sh'
+              sh("docker push $DOCKER_USR/racer")     
             }
         }
     }
