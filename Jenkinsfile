@@ -1,4 +1,4 @@
-node {
+node linux {
     def app
     stage ('Clone and Build') {
         checkout scm
