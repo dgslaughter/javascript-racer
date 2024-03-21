@@ -1,5 +1,9 @@
 node {
     def app
+    stage ('Initialize') {
+        def dockerHome = tool 'myDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
     stage ('Clone and Build') {
         checkout scm
         app=docker.build("racer")
