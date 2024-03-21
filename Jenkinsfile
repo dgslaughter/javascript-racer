@@ -1,4 +1,4 @@
-node {
+node david-optiplex-3020 {
     def app
     stage ('Clone and Build') {
         checkout scm
