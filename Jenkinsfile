@@ -2,7 +2,7 @@ node {
     def app
     stage ('Clone and Build') {
         checkout scm
-        app=docker.build("dgslaughter/javascript-racer")
+        app=docker.build("racer")
     }
     stage ('Push image') {
         docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
