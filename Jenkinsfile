@@ -3,6 +3,7 @@ node {
     stage ('Clone and Build') {
         checkout scm
         app=docker.build("racer")
+        app.tag(["racer", "dgslaughter/racer"])
     }
     stage ('Push image') {
         docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
