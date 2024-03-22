@@ -1,7 +1,9 @@
 node {
     def app
-    stage ('Clone and Build') {
+    stage ('Clone Repo') {
         checkout scm
+    }
+    stage ('Build') {
         app=docker.build("dgslaughter/racer")
     }
     stage ('Push image') {
