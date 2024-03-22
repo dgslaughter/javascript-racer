@@ -6,7 +6,7 @@ node {
     }
     stage ('Push image') {
         docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
-            app.push("app:racer")
+            app.push("latest")
         }
     }
 }
