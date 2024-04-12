@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: racer-deployment
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true" # <1>
 spec:
   selector:
     matchLabels:
