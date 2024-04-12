@@ -1,8 +1,8 @@
 apiVersion: aprgoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-argo-application
-  namespace: argocd
+  name: racer
+  namespace: kube-public
 spec:
   project: default
   source:
@@ -15,7 +15,7 @@ spec:
 
   syncPolicy:
     syncOptions:
-    - CreateNamesapce=true
+    - CreateNamespace=true
     automated:
       selfHeal: true
       prune: true
