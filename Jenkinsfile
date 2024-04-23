@@ -1,24 +1,19 @@
 node {
     def app
-    stage('Docker node test') {
-      agent {
-        docker {
-          // Set both label and image
-          label 'docker'
-          image 'node:7-alpine'
-          args '--name docker-node' // list any args
-        }
-      }
+    agent {
+      docker { image 'node:20.11.1-alpine3.19' }
     }
-    stage ('Clone Repo') {
+    stages {
+      stage ('Clone Repo') {
         checkout scm
-    }
-    stage ('Build') {
+      }
+      stage ('Build') {
         app=docker.build("dgslaughter/racer")
-    }
-    stage ('Push image') {
+      }
+      stage ('Push image') {
         docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
             app.push("latest")
         }
+      }
     }
 }
