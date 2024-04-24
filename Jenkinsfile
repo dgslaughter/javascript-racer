@@ -1,8 +1,5 @@
 node {
     def app
-    agent {
-      docker { image 'node:20.10-dind' }
-    }
     stage ('Clone Repo') {
         checkout scm
     }
