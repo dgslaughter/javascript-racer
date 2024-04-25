@@ -1,4 +1,6 @@
 node {
+    agent any
+    
     def app
     stage ('Clone Repo') {
         checkout scm
