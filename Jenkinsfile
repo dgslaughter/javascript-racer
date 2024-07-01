@@ -11,7 +11,7 @@ pipeline {
         stage('docker build and push') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: '5c578cd3-a9f3-45be-916b-95afc91bc316', toolName: 'Docker') {
+                    wiwithCredentials([usernamePassword(credentialsId: 'docker hub', passwordVariable: 'docker hubPassword', usernameVariable: 'docker hubUser')]) {
                         sh "docker build -t dgslaughter/racer:latest ."
                         sh "docker push dgslaughter/racer:latest"
                     }
