@@ -15,7 +15,6 @@ pipeline {
                       withCredentials([usernamePassword(credentialsId: 'docker hub', passwordVariable: 'docker hubPassword', usernameVariable: 'docker hubUser')]) {
                           sh "docker build -t dgslaughter/racer:latest ."
                           sh "docker push dgslaughter/racer:latest"
-                      }
                     }
                 }
             }
