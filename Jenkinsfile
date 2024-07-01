@@ -7,7 +7,6 @@ pipeline {
                 git changelog: false, poll: false, url: 'https://github.com/dgslaughter/javascript-racer'
             }
         }
-Docker Hub Global
         stage('docker build and push') {
             steps {
                 script 
