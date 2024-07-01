@@ -10,10 +10,12 @@ pipeline {
 
         stage('docker build and push') {
             steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'docker hub', passwordVariable: 'docker hubPassword', usernameVariable: 'docker hubUser')]) {
-                        sh "docker build -t dgslaughter/racer:latest ."
-                        sh "docker push dgslaughter/racer:latest"
+                script 
+                    docker.withTool('docker') {
+                      withCredentials([usernamePassword(credentialsId: 'docker hub', passwordVariable: 'docker hubPassword', usernameVariable: 'docker hubUser')]) {
+                          sh "docker build -t dgslaughter/racer:latest ."
+                          sh "docker push dgslaughter/racer:latest"
+                      }
                     }
                 }
             }
