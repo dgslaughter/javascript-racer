@@ -12,7 +12,7 @@ Docker Hub Global
             steps {
                 script 
                     {
-                      cker.withRegistry( '', 'Docker Hub Global'){
+                      docker.withRegistry( '', 'Docker Hub Global'){
                           sh "docker build -t dgslaughter/racer:latest ."
                           sh "docker push dgslaughter/racer:latest"
                     }
