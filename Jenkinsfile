@@ -13,7 +13,7 @@ pipeline {
                     {
                       docker.withRegistry( 'https://registry.docker.com/repositories/dgslaughter', 'DockerGH'){
                           sh "docker build -t dgslaughter/racer:latest ."
-                          sh "docker push dgslaughter/racer:latest"
+
                     }
                 }    
             }
