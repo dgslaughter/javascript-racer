@@ -14,7 +14,7 @@ pipeline {
                 script 
                     {
                       docker.withRegistry( 'https://hub.docker.com/repository/docker/dgslaughter/racer/', 'DockerGH'){
-                          sh "docker build -t dgslaughter/racer:latest ."
+                          //sh "docker build -t dgslaughter/racer:latest ."
 
                     }
                 }    
